@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h1> LOCAL STORAGE MANAGEMENT</h1>
+        <button id="btn1">Add Data to localStorage</button>
+        <button id="btn2">Get Data from localStorage</button>
+        <button id="btn3">Delete Data from localStorage</button>
+    </div>
+    <script>
+        const studentBioData = {
+            FirstName: "Saloni",
+            lastName: "Singh",
+            Age: 22,
+            gende : "femail",
+            course : ["html", "css", "javascript"],
+            address: {
+                street: "87099 Main ststion, gurugram",
+                city: "gurugram, haryana",
+                zipcode: "123456",
+            },
+        }
+
+        const addTodoList = () => {
+            localStorage.setItem("objectData", JSON.stringify(studentBioData));
+        }
+
+        const  getTodoList = () => {
+            const getData = JSON.parse(localStorage.getItem("objectData"));
+            console.log("Access from local storage:",  getData );
+        }
+
+        const deleteTodoList = () => {
+            const deleteData = localStorage.removeItem("objectData");
+            console.log("Data after daleted:", deleteData);
+        }
+
+        document.getElementById('btn1').addEventListener("click", () => {
+            addTodoList();
+        })
+
+        document.getElementById('btn2').addEventListener("click", () => {
+            getTodoList();
+        })
+
+        document.getElementById('btn3').addEventListener("click", () => {
+            deleteTodoList();
+        })
+    </script>
+</body>
+</html>
